@@ -1,0 +1,262 @@
+* {
+    font-family: 'Arvo', serif;
+}
+
+body {
+    background-color: #58a4b0;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+#root {
+    width: 50%;
+    background-color: #bac1b8;
+    padding: 20px 40px;
+    border-radius: 25px;
+    text-align: center;
+    position: relative;
+}
+
+#counter {
+    background-color: white;
+    padding: 10px;
+    width: fit-content;
+    border-radius: 14px;
+    margin: auto;
+    margin-bottom: 8vh;
+}
+
+#searchBar {
+    font-size: large;
+    border-radius: 5px;
+    padding: 6px;
+    width: 70%;
+}
+
+#searchContainer {
+    margin-bottom: 5vh;
+}
+
+
+.item {
+    background-color: #3e517a;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    text-decoration: none;
+    position: relative;
+    list-style-type: none;
+    min-height: 50px;
+    border-radius: 10px;
+}
+
+.item>p {
+    display: inline-block;
+}
+
+.removeItem {
+    background-color: #b83030;
+    border-radius: 50%;
+    padding-top: 10px;
+    padding-bottom: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: white;
+    font-size: small !important;
+    cursor: pointer;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    transition: 0.3s;
+}
+
+.removeItem:hover {
+    background-color: white;
+    color: #b83030;
+}
+
+#addTodo {
+    background-color: #2b59c3;
+    color: white;
+    border-radius: 60%;
+    font-weight: bolder !important;
+    border: 1px solid #2b59c3;
+    width: 80px;
+    height: 80px;
+    font-size: 35px;
+    position: absolute;
+    bottom: -40px;
+    right: -40px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#addTodo:hover {
+    border: 1px solid #2b59c3;
+    background-color: white;
+    color: #2b59c3;
+}
+
+.step {
+    background-color: #ffbf46;
+    border-radius: 50%;
+    width: 25px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 50px;
+    position: absolute;
+    left: 25px;
+    top: 20px;
+}
+#Todos{
+    margin-bottom: 8vh;
+}
+
+/*********************Checkbox*******************/
+
+@-webkit-keyframes check {
+    0% {
+      height: 0;
+      width: 0;
+    }
+    25% {
+      height: 0;
+      width: 10px;
+    }
+    50% {
+      height: 20px;
+      width: 10px;
+    }
+  }
+  @-moz-keyframes check {
+    0% {
+      height: 0;
+      width: 0;
+    }
+    25% {
+      height: 0;
+      width: 10px;
+    }
+    50% {
+      height: 20px;
+      width: 10px;
+    }
+  }
+  @-ms-keyframes check {
+    0% {
+      height: 0;
+      width: 0;
+    }
+    25% {
+      height: 0;
+      width: 10px;
+    }
+    50% {
+      height: 20px;
+      width: 10px;
+    }
+  }
+  @keyframes check {
+    0% {
+      height: 0;
+      width: 0;
+    }
+    25% {
+      height: 0;
+      width: 10px;
+    }
+    50% {
+      height: 20px;
+      width: 10px;
+    }
+  }
+  body {
+    background-color: #6aa;
+    font-family: 'Lato', sans-serif;
+    font-weight: 100%;
+  }
+  
+  .wrapper {
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    color: #fff;
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+  }
+  
+  .checkbox, .checkbox-alt {
+    background-color: #fff;
+    display: inline-block;
+    height: 0px;
+    margin: 0 0.25em;
+    width: 50px;
+    position: absolute;
+    left: 60px;
+    border-radius: 50px;
+  }
+  .checkbox label, .checkbox-alt label {
+    display: block;
+    height: 50px;
+    position: relative;
+    width: 50px;
+    cursor: pointer;
+  }
+  .checkbox label:after, .checkbox-alt label:after {
+    /*
+    This element has a border on the right, and top. By rotating it looks like a check symbol, but the wrong way. That's why I'm flipping it with scaleX(-1)
+    */
+    -moz-transform: scaleX(-1) rotate(135deg);
+    -ms-transform: scaleX(-1) rotate(135deg);
+    -webkit-transform: scaleX(-1) rotate(135deg);
+    transform: scaleX(-1) rotate(135deg);
+    /*
+    I want to position the symbol using the left top, because when increasing the width and height of an object, it expands from the top left corner as well. That is what makes it looks like it's being drawn.
+    */
+    -moz-transform-origin: left top;
+    -ms-transform-origin: left top;
+    -webkit-transform-origin: left top;
+    transform-origin: left top;
+    border-right: 4px solid #cee;
+    border-top: 4px solid #cee;
+    content: '';
+    display: block;
+    height: 20px;
+    left: 14px;
+    position: absolute;
+    top: 26px;
+    width: 10px;
+  }
+  .checkbox label:hover:after, .checkbox-alt label:hover:after {
+    border-color: #bdd;
+  }
+  .checkbox input, .checkbox-alt input {
+    display: none;
+  }
+  .checkbox input:checked + label:after, .checkbox-alt input:checked + label:after {
+    -webkit-animation: check 0.8s;
+    -moz-animation: check 0.8s;
+    -o-animation: check 0.8s;
+    animation: check 0.8s;
+    border-color: #6daa66;
+  }
+  .checkbox.checkbox-alt label:hover:after, .checkbox-alt.checkbox-alt label:hover:after {
+    -webkit-animation: check 0.8s ease infinite;
+    -moz-animation: check 0.8s ease infinite;
+    -o-animation: check 0.8s ease infinite;
+    animation: check 0.8s ease infinite;
+  }
+  .checkbox.checkbox-alt input:checked + label:after, .checkbox-alt.checkbox-alt input:checked + label:after {
+    -webkit-animation: none;
+    -moz-animation: none;
+    -o-animation: none;
+    animation: none;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 100;
+  }
+  
