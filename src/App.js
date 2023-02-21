@@ -41,6 +41,14 @@ function App(props) {
     setTodos(newTodos);
   }
 
+  const deleteTodo = (text) => {
+    const todoIndex = todos.findIndex(todo => todo.text === text);
+    const newTodos = [...todos];
+    newTodos.splice(todoIndex,1);
+    console.log("removing element",todoIndex)
+    setTodos(newTodos);
+  }
+
   return (
     <React.Fragment>
       <TodoCounter
@@ -61,6 +69,7 @@ function App(props) {
              id={index} 
              completed={todo.completed}
              onComplete={()=>changeTodoStatus(todo.text)}
+             onDelete={()=>deleteTodo(todo.text)}
              /> 
              })}
       </TodoList>

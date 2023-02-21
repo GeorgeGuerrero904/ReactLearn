@@ -11,7 +11,7 @@ function TodoItem(props) {
             <p>
                 {props.text}
             </p>
-            <span className="removeItem">X</span>
+            <span className="removeItem" onClick={props.onDelete}>X</span>
         </li>
     );
 }
