@@ -10,18 +10,34 @@ import './css/Main.css';
 //   { text: 'tets 3', completed: false, step: 3 }
 // ];
 
-function App(props) {
-  const storageTodos = localStorage.getItem("todosList");
-  let parsedTodos;
-  if(!storageTodos){
-    localStorage.setItem("todoslist", "[]");
-    parsedTodos = [];
+function useLocalStorage(itemName, initialValue) {
 
-  }else{
-    parsedTodos = JSON.parse(storageTodos);
+  const localStorageItem = localStorage.getItem(itemName);
+  let parsedItem;
+  if (!localStorageItem) {
+    localStorage.setItem(itemName, JSON.stringify(initialValue));
+    parsedItem = [];
+
+  } else {
+    parsedItem = JSON.parse(localStorageItem);
   }
 
-  const [todos, setTodos] = React.useState(parsedTodos);
+  const [item, setItem] = React.useState(parsedItem);
+  const saveItem = function (newItem) {
+    const ItemStr = JSON.stringify(newItem);
+    localStorage.setItem(itemName, ItemStr);
+    setItem(newItem);
+  }
+
+  return [
+    item,
+    saveItem,
+  ]
+}
+
+function App(props) {
+  const [todos, saveTodos] = useLocalStorage("todosList",[]);
+
   const [searchValue, setSearchValue] = React.useState('');
   const completedTodos = todos.filter(todo => !!todo.completed).length;
   const totalTodos = todos.length;
@@ -38,11 +54,7 @@ function App(props) {
     })
   }
 
-  const saveTodos = function(newTodos){
-    const todosStr = JSON.stringify(newTodos);
-    localStorage.setItem("todosList", todosStr);
-    setTodos(newTodos);
-  }
+
 
   const changeTodoStatus = (text) => {
     const todoIndex = todos.findIndex(todo => todo.text === text);
@@ -55,20 +67,20 @@ function App(props) {
   const deleteTodo = (text) => {
     const todoIndex = todos.findIndex(todo => todo.text === text);
     const newTodos = [...todos];
-    newTodos.splice(todoIndex,1);
-    console.log("removing element",todoIndex)
+    newTodos.splice(todoIndex, 1);
+    console.log("removing element", todoIndex)
     saveTodos(newTodos);
   }
 
   return (
     <AppUI
-    totalTodos={totalTodos}
-    completedTodos={completedTodos}
-    searchValue={searchValue}
-    setSearchValue={setSearchValue}
-    searchedTodos={searchedTodos}
-    changeTodoStatus={changeTodoStatus}
-    deleteTodo={deleteTodo}
+      totalTodos={totalTodos}
+      completedTodos={completedTodos}
+      searchValue={searchValue}
+      setSearchValue={setSearchValue}
+      searchedTodos={searchedTodos}
+      changeTodoStatus={changeTodoStatus}
+      deleteTodo={deleteTodo}
     />
   );
 }
