@@ -11,32 +11,45 @@ import './css/Main.css';
 // ];
 
 function useLocalStorage(itemName, initialValue) {
+  const [loading, setLoading] = React.useState(true)
+  const [item, setItem] = React.useState(initialValue);
+  React.useEffect(() => {
+    setTimeout(() => {
+      const localStorageItem = localStorage.getItem(itemName);
+      let parsedItem;
+      if (!localStorageItem) {
+        localStorage.setItem(itemName, JSON.stringify(initialValue));
+        parsedItem = [];
 
-  const localStorageItem = localStorage.getItem(itemName);
-  let parsedItem;
-  if (!localStorageItem) {
-    localStorage.setItem(itemName, JSON.stringify(initialValue));
-    parsedItem = [];
+      } else {
+        parsedItem = JSON.parse(localStorageItem);
+      }
 
-  } else {
-    parsedItem = JSON.parse(localStorageItem);
-  }
+      setItem(parsedItem);
+      setLoading(false);
+    }, 1000);
+  });
 
-  const [item, setItem] = React.useState(parsedItem);
+
   const saveItem = function (newItem) {
     const ItemStr = JSON.stringify(newItem);
     localStorage.setItem(itemName, ItemStr);
     setItem(newItem);
   }
 
-  return [
-    item,
+  return {
+    item ,
     saveItem,
-  ]
+    loading,
+  }
 }
 
 function App(props) {
-  const [todos, saveTodos] = useLocalStorage("todosList",[]);
+  const  {
+    item : todos,
+    saveItem: saveTodos,
+    loading,
+  } = useLocalStorage("todosList", []);
 
   const [searchValue, setSearchValue] = React.useState('');
   const completedTodos = todos.filter(todo => !!todo.completed).length;
@@ -72,8 +85,14 @@ function App(props) {
     saveTodos(newTodos);
   }
 
+  // React.useEffect(()=>{
+  //   console.log("use effect triggered")
+  // }, [totalTodos]);
+
+
   return (
     <AppUI
+      loading={loading}
       totalTodos={totalTodos}
       completedTodos={completedTodos}
       searchValue={searchValue}
