@@ -6,7 +6,7 @@ function TodoItem(props) {
             <div className="step">{props.step}</div>
             <div className="checkbox" >
                 <input type="checkbox" onChange={props.onComplete} id={props.id} name={props.id} checked={props.completed ? "checked" : ""} />
-                <label for={props.id}></label>
+                <label htmlFor={props.id}></label>
             </div>
             <p>
                 {props.text}

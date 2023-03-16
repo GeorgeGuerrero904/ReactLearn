@@ -1,0 +1,43 @@
+.modal-Container{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#container{
+    background-color: white;
+    width: 30%;
+    margin: auto;
+    margin-top: 30vh;
+    padding: 40px;
+    text-align: center;
+}
+
+.modal-button{
+    margin: auto;
+    padding: 8px;
+    width: 100px;
+    margin: 5px 10px;
+    cursor: pointer;
+    background-color: #2b59c3;
+    color: white;
+    font-weight: 100;
+    border-radius: 5px;
+    transition: 0.4s all;
+}
+
+.modal-button:hover{
+    color:#2b59c3 ;
+    background-color: white;
+}
+#buttonsPlacer{
+    text-align: center;
+}
+
+#textA{
+    width: 300px;
+    height: 100px;
+}
