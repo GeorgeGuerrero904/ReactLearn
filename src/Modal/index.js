@@ -6,7 +6,7 @@ function Modal({ children, setOpenModal }) {
 
     const [addText, setAddText] = React.useState('');
     const {addTodo} = React.useContext(TodoContext);
-    const CloseModal = () => {
+    const CloseModal = (event) => {
         setOpenModal(false);
     }
     const addTodoItem = () => {
