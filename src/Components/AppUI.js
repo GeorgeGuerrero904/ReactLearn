@@ -37,7 +37,8 @@ function AppUI() {
             {!!openModal && (
                 createPortal(
                     <Modal
-                    setOpenModal={setOpenModal}        
+                    setOpenModal={setOpenModal}   
+                    onClick={()=>{setOpenModal(false)}}
                     />,
                     document.getElementById('modal')
                 )
