@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Getting Started with Todo List App
 This is a Todo list app made in React from scratch 
 ## Available Scripts
 
