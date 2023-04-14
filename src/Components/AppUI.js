@@ -8,12 +8,14 @@ import { TodoItem } from './TodoItem';
 import { TodoContext } from "../TodoContext";
 import { createPortal } from "react-dom";
 import { Modal } from "../Modal";
+import { PageTitle } from "./PageTitle";
 
 function AppUI() {
     const { error, loading, searchedTodos, completedTodos, deleteTodo, changeTodoStatus, openModal, setOpenModal } = React.useContext(TodoContext);
 
     return (
         <React.Fragment>
+            <PageTitle></PageTitle>
             <TodoCounter />
             <TodoSearch />
             <TodoList>
